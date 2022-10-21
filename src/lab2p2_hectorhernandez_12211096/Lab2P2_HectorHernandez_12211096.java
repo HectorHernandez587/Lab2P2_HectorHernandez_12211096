@@ -28,16 +28,14 @@ public class Lab2P2_HectorHernandez_12211096 {
             int opcion = lea.nextInt();
             
             //Jugadores Predeterminados
-            char a = 'a', v = 'b', c = 'c', d = 'd';
-            listaj.add(new Jugador(a));
-            listaj.add(new Jugador(v));
-            listaj.add(new Jugador(c));
-            listaj.add(new Jugador(d));
+            listaj.add(new Jugador('a'));
+            listaj.add(new Jugador('b'));
+            listaj.add(new Jugador('c'));
+            listaj.add(new Jugador('d'));
             
             //Bot Predeterminados
-            char q = 'Q', w = 'W';
-            listab.add(new Bot(q));
-            listab.add(new Bot(w));
+            listab.add(new Bot('Q'));
+            listab.add(new Bot('W'));
             
 
             switch (opcion) {
@@ -53,8 +51,9 @@ public class Lab2P2_HectorHernandez_12211096 {
                     }
                     if (centinela == true) {
                         listaj.add(j);
+                        System.out.println("Jugador Agregado con exito");
                     } else {
-                        System.out.println("Ese nombre ya existe");
+                        System.out.println("Ese nombre ya existe, ingrese otro diferente");
                     }
                     System.out.println("Lista de Jugadores: \n" + listaj);
 
@@ -64,28 +63,31 @@ public class Lab2P2_HectorHernandez_12211096 {
                     System.out.println("Ingrese el nombre del bot: ");
                     char nombrebot = lea.next().charAt(0);
                     Bot b = new Bot(nombrebot);
-                    boolean centinela = true;
+                    boolean vuelta = true;
                     for (Bot bot : listab) {
                         if (bot.getNombre() == nombrebot) {
-                            centinela = false;
+                            vuelta = false;
                         }
                     }
-                    if (centinela == true) {
+                    if (vuelta == true) {
                         listab.add(b);
+                        System.out.println("Bot Agregado con exito");
                     } else {
-                        System.out.println("Ese nombre ya existe");
+                        System.out.println("Ese nombre ya existe, ingrese otro diferente");
                     }
                 }
                 break;
                 case 3: {
+                    System.out.println("Items Disponibles y sus Precios: ");
+                    System.out.println("1) Cola: 60");
+                    System.out.println("2) Acelerador: 30");
+                    System.out.println("3) Mina: 45");
+                    System.out.println("4) Iluminador: 45");
+                    System.out.println("5) Detector: 30");
                     System.out.println("Ingrese el nombre del Item: ");
                     String item = lea.next();
                     Item i = new Item(item);
-                    if (listai.contains(item)) {
-                        System.out.println("Ese nombre ya existe");
-                    } else {
-                        //listab.add(i);
-                    }
+                    
                     System.out.println("Lista de Items: \n" + listab);
 
                 }
@@ -136,7 +138,7 @@ public class Lab2P2_HectorHernandez_12211096 {
         for (int i = 0; i < 12; i++) {
             int x = r.nextInt(29);
             int y = r.nextInt(29);
-            if (contador < listab.size()) {
+            if (contador2 < listab.size()) {
                 llena[x][y] = listab.get(contador2).getNombre();
                 contador2++;
             }

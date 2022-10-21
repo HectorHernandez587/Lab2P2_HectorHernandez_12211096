@@ -2,11 +2,11 @@ package lab2p2_hectorhernandez_12211096;
 
 
 public class Jugador {
-    String nombre;
+    char nombre;
     int victorias;
     int dinero;
 
-    public Jugador(String nombre) {
+    public Jugador(char nombre) {
         this.nombre = nombre;
         this.victorias = 0;
         this.dinero = 0;
@@ -17,11 +17,11 @@ public class Jugador {
         return "Jugador{" + "nombre=" + nombre + '}';
     }
 
-    public String getNombre() {
+    public char getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(char nombre) {
         this.nombre = nombre;
     }
 

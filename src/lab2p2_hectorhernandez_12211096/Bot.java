@@ -2,22 +2,28 @@ package lab2p2_hectorhernandez_12211096;
 
 
 public class Bot {
-    String nombre;
+    char nombre;
     int velocidad;
     
     String audiopostmortem;
 
-    public Bot(String nombre) {
+    public Bot(char nombre) {
         this.nombre = nombre;
         this.velocidad = 0;
         this.audiopostmortem = "*Audio Post Mortem*";
     }
 
-    public String getNombre() {
+    @Override
+    public String toString() {
+        return "Bot{" + "nombre=" + nombre + '}';
+    }
+    
+
+    public char getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(char nombre) {
         this.nombre = nombre;
     }
 
@@ -36,6 +42,7 @@ public class Bot {
     public void setAudiopostmortem(String audiopostmortem) {
         this.audiopostmortem = audiopostmortem;
     }
+
     
 
     

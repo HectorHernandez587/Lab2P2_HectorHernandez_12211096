@@ -8,12 +8,14 @@ public class Lab2P2_HectorHernandez_12211096 {
 
     static Random r = new Random();
     static Scanner lea = new Scanner(System.in);
+    static ArrayList <Jugador> listaj = new ArrayList();
+    static ArrayList <Bot> listab = new ArrayList();
+    static ArrayList <Item> listai = new ArrayList();
 
     public static void main(String[] args) {
 
         boolean bandera = true;
-        ArrayList lista1 = new ArrayList();
-        ArrayList lista2 = new ArrayList();
+        
         while (bandera == true) {
             System.out.println("\n Roblox Corporation");
             System.out.println("-----MENU-----");
@@ -24,36 +26,67 @@ public class Lab2P2_HectorHernandez_12211096 {
             System.out.println("5) Salir ");
             System.out.print("Ingrese la opcion que desee: ");
             int opcion = lea.nextInt();
+            
+            //Jugadores Predeterminados
+            char a = 'a', v = 'b', c = 'c', d = 'd';
+            listaj.add(new Jugador(a));
+            listaj.add(new Jugador(v));
+            listaj.add(new Jugador(c));
+            listaj.add(new Jugador(d));
+            
+            //Bot Predeterminados
+            char q = 'Q', w = 'W';
+            listab.add(new Bot(q));
+            listab.add(new Bot(w));
+            
 
             switch (opcion) {
                 case 1: {
                     System.out.println("Ingrese el nombre del jugador: ");
-                    String nombre = lea.next();
+                    char nombre = lea.next().charAt(0);
                     Jugador j = new Jugador(nombre);
-                    
-                    if (lista1.contains(nombre)) {
-                        System.out.println("Ese nombre ya existe");
-                    } else {
-                        lista1.add(j);
+                    boolean centinela = true;
+                    for (Jugador jugador : listaj) {
+                        if (jugador.getNombre() == nombre) {
+                            centinela = false;
+                        }
                     }
-                    
-                    System.out.println("Lista de Jugadores: \n" + lista1);
+                    if (centinela == true) {
+                        listaj.add(j);
+                    } else {
+                        System.out.println("Ese nombre ya existe");
+                    }
+                    System.out.println("Lista de Jugadores: \n" + listaj);
+
                 }
                 break;
                 case 2: {
-                    
                     System.out.println("Ingrese el nombre del bot: ");
-                    String nombrebot = lea.next();
+                    char nombrebot = lea.next().charAt(0);
                     Bot b = new Bot(nombrebot);
-                    if (lista2.contains(nombrebot)) {
-                        System.out.println("Ese nombre ya existe");
-                    } else {
-                        lista2.add(b);
+                    boolean centinela = true;
+                    for (Bot bot : listab) {
+                        if (bot.getNombre() == nombrebot) {
+                            centinela = false;
+                        }
                     }
-                    System.out.println("Lista de Jugadores: \n" + lista2);
+                    if (centinela == true) {
+                        listab.add(b);
+                    } else {
+                        System.out.println("Ese nombre ya existe");
+                    }
                 }
                 break;
                 case 3: {
+                    System.out.println("Ingrese el nombre del Item: ");
+                    String item = lea.next();
+                    Item i = new Item(item);
+                    if (listai.contains(item)) {
+                        System.out.println("Ese nombre ya existe");
+                    } else {
+                        //listab.add(i);
+                    }
+                    System.out.println("Lista de Items: \n" + listab);
 
                 }
                 break;
@@ -90,6 +123,24 @@ public class Lab2P2_HectorHernandez_12211096 {
             int y = r.nextInt(29);
             llena[x][y] = "X";
         }
+        int contador = 0;
+        for (int i = 0; i < 12; i++) {
+            int x = r.nextInt(29);
+            int y = r.nextInt(29);
+            if (contador < listaj.size()) {
+                llena[x][y] = listaj.get(contador).getNombre();
+                contador++;
+            }
+        }
+        int contador2 = 0;
+        for (int i = 0; i < 12; i++) {
+            int x = r.nextInt(29);
+            int y = r.nextInt(29);
+            if (contador < listab.size()) {
+                llena[x][y] = listab.get(contador2).getNombre();
+                contador2++;
+            }
+        }
 
         return llena;
     }
@@ -102,5 +153,7 @@ public class Lab2P2_HectorHernandez_12211096 {
             System.out.println();
         }
     }
+    
+    
     
 }//Fin Public Class
